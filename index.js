@@ -25,21 +25,27 @@ const app = Vue.createApp({
         
     },
 
-    // created(){
-    //     var u = new SpeechSynthesisUtterance()
-    //             u.text = "Tell me a joke";
-    //             u.lang = 'en-US';
-    //             u.rate = 1.2;
-               
-    //             speechSynthesis.speak(u);
+   created(){
+    
 
-    //     var recognition = new SpeechRecognition();
-    //     recognition.onresult = function(event) {
-    //         if (event.results.length > 0) {
-    //         q.value = event.results[0][0].transcript;
-    //         q.form.submit();
-    //         }
-    //     }
-    // }
+window.SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+
+const recognition = new SpeechRecognition();
+recognition.interimResults = true;
+
+recognition.addEventListener("result", (e) => {
+    const transcript = Array.from(e.results)
+    .map(result => result.transcript)
+    .join('')
+    this.joke=transcript;
+    
+})
+
+recognition.addEventListener('end', recognition.start);
+  recognition.start();
+
+
+   }
 })
 app.mount("#updates")

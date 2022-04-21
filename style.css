@@ -4,6 +4,7 @@
 }
 .animation{
     transform:rotate(0deg);
+    
     animation-name:routing;
     animation-duration:2s;
 }
