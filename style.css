@@ -1,0 +1,24 @@
+.image{
+    width:20%;
+    
+}
+.animation{
+    transform:rotate(0deg);
+    animation-name:routing;
+    animation-duration:2s;
+}
+@keyframes routing {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(20deg);}
+  }
+
+.button{
+    margin-top:3rem;
+    width:15%;
+    font-size: 20px !important;
+    font-weight:500 !important;
+}
+
+.jokes{
+    width:30%
+}
