@@ -18,7 +18,7 @@ const app = Vue.createApp({
                 var u = new SpeechSynthesisUtterance()
                 u.text = this.joke;
                 u.lang = 'en-US';
-                u.rate = 1.2;
+                u.rate = 1;
                
                 speechSynthesis.speak(u);
         }
@@ -26,8 +26,6 @@ const app = Vue.createApp({
     },
 
    created(){
-    
-
 window.SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
 
@@ -36,16 +34,17 @@ recognition.interimResults = true;
 
 recognition.addEventListener("result", (e) => {
     const transcript = Array.from(e.results)
+    .map(result=> result[0])
     .map(result => result.transcript)
-    .join('')
-    this.joke=transcript;
-    
+    .join('');
+    if (transcript == 'tell me a joke'){
+        this.getApi();
+    }
 })
 
 recognition.addEventListener('end', recognition.start);
-  recognition.start();
+recognition.start();
+}
 
-
-   }
 })
 app.mount("#updates")

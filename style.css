@@ -1,10 +1,10 @@
 .image{
     width:20%;
     
+    
 }
 .animation{
     transform:rotate(0deg);
-    
     animation-name:routing;
     animation-duration:2s;
 }
@@ -22,4 +22,18 @@
 
 .jokes{
     width:30%
+}
+
+@media (max-width:470px){
+    .image{
+        width:80%
+    }
+
+    .button{
+        width:70%
+    }
+
+    .jokes{
+        width:90%
+    }
 }
