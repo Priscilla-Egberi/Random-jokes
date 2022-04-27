@@ -3,10 +3,13 @@ const app = Vue.createApp({
         return{
             joke:"",
             classList:"",
+            lang:'en-US',
             languages:[
                 {name:'french', code:"fr-FR"},
                 {name:'english', code:"en-US"},
-                {name:'spanish', code:"es-ES"}
+                {name:'spanish', code:"es-ES"},
+                {name:'chinese', code:"zh-Hant"},
+                
             ]
         };
     },
@@ -22,13 +25,14 @@ const app = Vue.createApp({
                 this.classList="animation";
                 var u = new SpeechSynthesisUtterance()
                 u.text = this.joke;
-                u.lang = 'de-DE';
+                u.lang = this.lang;
                 u.rate = 1;
                
                 speechSynthesis.speak(u);
         },
-        changeLanguage(){
-            
+        changeLanguage(index){
+            this.lang=this.languages[index].code;
+            console.log(this.lang);
         }
         
     },

@@ -20,7 +20,7 @@
           language
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li v-for="(language, index) in languages" @click="changeLanguage"><a class="dropdown-item" href="#">{{language.name}}</a></li>
+          <li v-for="(language, index) in languages" @click="changeLanguage(index)"><a class="dropdown-item" href="#">{{language.name}}</a></li>
           
         </ul>
       </div>
